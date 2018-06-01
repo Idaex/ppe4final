@@ -1,0 +1,96 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}
+{% block body %}
+
+    {# <div class="jumbotron jumbotron-fluid">
+         <div class="container">
+             <h1 class="display-4">MediaStore</h1>
+             <p class="lead">ajouter image ici</p>
+         </div>
+     </div>  #} 
+    <div class='background-books'>
+
+        <div class="container"  >
+            <h1 class="center text-center font-fam-brush" style="min-height: 250px; font-size: 150px;color: yellow; border:3px black solid; background: url(http://pecheursqs.cluster003.ovh.net/wp-content/uploads/2016/05/04-270-jeudi-1er-Texture-de-sable.jpg)"><i>La Casa De Playa</i></h1>
+        </div>
+    </div>
+    {#<div class="separator-test"></div>#}
+
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-sm-3" style="margin-top: 75px;">
+                <div class="container border-custom-little font-fam-courrier">
+                    <div class='row'>
+                        <div>
+                            {% for cat in categories%}
+                                <h4>
+                                    <a href="{{ path('home', { 'categorie': cat.getCatLibelle }) }}" 
+                                       class="btn-transparent">
+                                        {{ cat.getCatLibelle }}
+                                    </a>
+                                </h4>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8 offset-1 " style="margin-top: 50px;">
+                <div class="container-fluid font-fam-courrier" >
+
+                    <h1 class="title" style="color:black" >Les produits</h1>
+                    <hr>
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% for produit in produits %}
+                                {% if produit.getProStock > 0 %}
+                                    <div class="col-sm-3">
+                                        <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                                            <a href="{{ path('produit', { 'id': produit.getProId }) }}" >
+                                                <img class="card-img-top" height="200"  src="{{produit.getProImage}}" alt="Card image cap">
+                                                <a/>
+                                                <div class="card-body">
+                                                    <p class="card-text">{{produit.getProNom}} {{produit.getProPrix}} euros </p>
+                                                    <a href="{{ path('produit', { 'id': produit.getProId }) }}" class="btn btn-secondary">Infos</a>
+                                                    <a class="btn btn-dark" href="{{ path('ajoutPanierFromHome', { 'id': produit.getProId }) }}" >
+                                                        <i class="fas fa-shopping-basket"></i></a>
+                                                </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {%endfor%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{%block footer %}
+    <footer>
+        <center>
+            </br>
+            <hr/>
+            <div class="container-fluid" style="color: black">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Informations</h4>
+                        <p>&copy; Copyright 2018 - LaCasaDePlaya</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Notre entrepôt</h4>
+                        <p><i class="icon-map-marker"></i>&nbsp;Perpignan 66 000 - 3 rue des jardins</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Nous contacter</h4>
+                        <p><i class="icon-phone"></i>&nbsp;Tel: 02 35 00 00 00 
+                            <i class="icon-print"></i>&nbsp;Mail: jouak.nabil@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </footer>
+{% endblock %}

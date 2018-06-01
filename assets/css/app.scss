@@ -1,0 +1,27 @@
+
+$main-color:#F6F6F6;
+$white: #00ff83;
+@import '~bootstrap/scss/bootstrap';
+body{
+  background-color: $main-color;
+  color:$white;
+  .navbar {
+
+    position: relative;
+
+    min-height: 50px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid transparent;
+    background-color: blue;
+
+  }
+  .inline-form input {
+    display: inline-block;
+    width: 100px;
+  }
+  .clrlink{
+      text-color:black;
+  }
+}

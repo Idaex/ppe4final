@@ -1,0 +1,26 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}
+{% block body %}
+
+
+    <div class="container-fluid" style="margin-top: 50px;" >
+        <div class="row">
+            <div class="col-sm-3 offset-1">
+                <img class="img-fluid img-thumbnail" style="height: 300px; width: 300px; " src="{{produit.getProImage}}" >
+            </div>
+            <div class="col-sm-4" style="color:black">
+                <h1>{{produit.getProNom}}</h1>
+                <br>
+                <h3 style="color:red">{{produit.getProPrix}} € </h3>
+                <br>
+                <h4>{{produit.getProStock}} encore en stock </h4>
+                <br/>
+                <h4>{{produit.getProResume}}</h4>
+                <br>
+                <a class="btn btn-dark" href="{{ path('ajoutPanierFromProduit', { 'id': produit.getProId }) }}" >
+                    <i class="fas fa-shopping-basket"></i> Ajouter au panier</a>
+            </div>
+        </div>
+    </div>
+
+{%endblock%}

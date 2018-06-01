@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+    {% block body %}
+        <div class="container" style="margin-top: 30px" style="color: black">
+            {% if vide %}
+                <div class="col-xs-12" style="background-color: rgba(255, 67,51,0.31); border-radius: initial;">
+                    <p style="text-align: center"> le panier est vide</p>
+                </div>
+            {% else %}
+                <div class="col-xs-12">
+                    <table style="width: 100%">
+                        <tr>
+                            <th>Produit</th>
+                            <th>Nom</th>
+                            <th>Quantité</th>
+                            <th>Prix</th>
+                            <th style="width:150px;"></th>
+
+                        </tr>
+                        {% set total = 0 %}
+                        {% for produit in panier %}
+                            <tr>
+                                <td>{{ produit.quantite|e }}</td>
+                                <td>{{ produit.id|e }}</td>
+                                <td>{{ produit.quantite|e }}</td>
+                                <td>{{ produit.prix|e }}$</td>
+                                <td>
+                                    <a type="button" class="btn btn-sm btn-outline-secondary" href="/plusun/{{ produit.id|e }}">+1</a>
+                                    <a type="button" class="btn btn-sm btn-outline-secondary" href="/moinsun/{{ produit.id|e }}">-1</a>
+                                    <a href="/delete/{{ produit.id|e }}" style="font-size: 11px">Supprimer</a>
+
+                                </td>
+                            </tr>
+                        {% set total = total + produit.prix|e %}
+                    {% endfor %}
+
+                    </table>
+                    <div class="row" style="margin-top: 20px" style="color: black">
+                        <div class="col-xs-3" style="margin-left: 75%"></div>
+                        <div class="col-xs-3">
+                            Total : {{ total }} $
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+{% endblock body %}
